@@ -72,7 +72,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.15</version>
+			<version>1.2.25</version>
 		</dependency>
 		<!-- 引入 Druid 数据源依赖：https://mvnrepository.com/artifact/com.alibaba/druid -->
         <dependency>
