@@ -1,0 +1,50 @@
+server:
+  servlet: 
+    context-path: /base
+    session:
+      timeout: 1800
+  tomcat:
+    uri-encoding: UTF-8
+    
+    max-threads: 20
+    max-connections: 100
+spring:
+  application:
+    name: base
+  mvc:
+    view:
+      suffix: .html
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/templates/,classpath:/static/
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/box?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis: 
+    database: 0
+    host: localhost
+    port: 6379
+    password: boxhill
+    timeout: 3000
+    jedis: 
+      pool:
+        max-active: 100
+        max-idle: 20
+        min-idle: 3
+        max-wait: 3000
+mybatis:
+  type-aliases-package: com.box.**.pojo
+  mapper-locations: classpath*:mapper/**/*.xml
+  configuration:    map-underscore-to-camel-case: true
+
+async: 
+  pool: 
+    corePoolSize: 10
+    maxPoolSize: 15
+    queueCapacity: 200
+    keepAliveSeconds: 60
+    threadNamePrefix: async-task-exec-  
+
