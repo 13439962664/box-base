@@ -19,13 +19,13 @@ spring:
     static-locations: classpath:/templates/,classpath:/static/
 
   datasource:
-    url: jdbc:mysql://localhost:3306/box?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://39.100.143.70:6306/box?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     username: root
-    password: 123456
+    password: box@)!(
     type: com.alibaba.druid.pool.DruidDataSource
   redis: 
     database: 0
-    host: localhost
+    host: 39.100.233.94
     port: 6379
     password: boxhill
     timeout: 3000
