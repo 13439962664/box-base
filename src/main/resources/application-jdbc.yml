@@ -1,6 +1,24 @@
 spring:
   datasource:
-    url: jdbc:mysql://39.100.143.70:6306/box?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
-    username: root
-    password: box@)!(
     type: com.alibaba.druid.pool.DruidDataSource
+    master:
+      url: jdbc:mysql://39.100.143.70:6306/box?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: box@)!(
+      initial-size: 3
+      min-idle: 3
+      max-active: 20
+    slave1:
+      url: jdbc:mysql://39.100.143.70:6306/box?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: box@)!(
+      initial-size: 3
+      min-idle: 3
+      max-active: 20
+    slave2:
+      url: jdbc:mysql://39.100.143.70:6306/box?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: box@)!(
+      initial-size: 3
+      min-idle: 3
+      max-active: 20
