@@ -29,9 +29,9 @@ public class RedisUtil {
 
 
 	@Autowired
-	private RedisTemplate<String, Object> redisTemplate;
+	private RedisTemplate<Object, Object> redisTemplate;
 
-	public RedisUtil(RedisTemplate<String, Object> redisTemplate) {
+	public RedisUtil(RedisTemplate<Object, Object> redisTemplate) {
 		this.redisTemplate = redisTemplate;
 	}
 
@@ -610,7 +610,7 @@ public class RedisUtil {
 	 */
 	public void addToListRight(String listKey, long time, TimeUnit timeUnit, Object... values) {
 		// 绑定操作
-		BoundListOperations<String, Object> boundValueOperations = redisTemplate.boundListOps(listKey);
+		BoundListOperations<Object, Object> boundValueOperations = redisTemplate.boundListOps(listKey);
 		// 插入数据
 		boundValueOperations.rightPushAll(values);
 		// 设置过期时间
@@ -627,7 +627,7 @@ public class RedisUtil {
 	 */
 	public List<Object> rangeList(String listKey, long start, long end) {
 		// 绑定操作
-		BoundListOperations<String, Object> boundValueOperations = redisTemplate.boundListOps(listKey);
+		BoundListOperations<Object, Object> boundValueOperations = redisTemplate.boundListOps(listKey);
 		// 查询数据
 		return boundValueOperations.range(start, end);
 	}
@@ -639,7 +639,7 @@ public class RedisUtil {
 	 */
 	public Object rifhtPop(String listKey) {
 		// 绑定操作
-		BoundListOperations<String, Object> boundValueOperations = redisTemplate.boundListOps(listKey);
+		BoundListOperations<Object, Object> boundValueOperations = redisTemplate.boundListOps(listKey);
 		return boundValueOperations.rightPop();
 	}
 
