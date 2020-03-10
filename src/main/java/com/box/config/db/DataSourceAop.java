@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 public class DataSourceAop {
 
 	@Pointcut("!@annotation(com.box.config.db.Master) "
-			+ "&& (execution(* com.box.*..*.select*(..)) "
-			+ "|| execution(* com.box.*..*.find*(..))"
-			+ "|| execution(* com.box.*..*.query*(..))"
-			+ "|| execution(* com.box.*..*.get*(..)))")
+			+ "&& (execution(* com.box.*.service..*.select*(..)) "
+			+ "|| execution(* com.box.*.service..*.find*(..))"
+			+ "|| execution(* com.box.*.service..*.query*(..))"
+			+ "|| execution(* com.box.*.service..*.get*(..)))")
 	public void readPointcut() {
 
 	}
@@ -22,10 +22,10 @@ public class DataSourceAop {
 			+ "|| execution(* com.box.*.service..*.insert*(..)) "
 			+ "|| execution(* com.box.*.service..*.create*(..)) "
 			+ "|| execution(* com.box.*.service..*.add*(..)) "
-			+ "|| execution(* com.box.*..*.update*(..)) "
-			+ "|| execution(* com.box.*..*.edit*(..)) "
-			+ "|| execution(* com.box.*..*.delete*(..)) "
-			+ "|| execution(* com.box.*..*.remove*(..))")
+			+ "|| execution(* com.box.*.service..*.update*(..)) "
+			+ "|| execution(* com.box.*.service..*.edit*(..)) "
+			+ "|| execution(* com.box.*.service..*.delete*(..)) "
+			+ "|| execution(* com.box.*.service..*.remove*(..))")
 	public void writePointcut() {
 
 	}

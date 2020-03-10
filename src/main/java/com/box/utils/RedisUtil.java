@@ -105,6 +105,20 @@ public class RedisUtil {
 	public Object get(String key) {
 		return key == null ? null : redisTemplate.opsForValue().get(key);
 	}
+	
+	public List<Object> getList(String key) {
+		return key == null ? null : redisTemplate.opsForValue().multiGet(redisTemplate.keys(key));
+	}
+	
+	/**
+	 * 普通缓存获取
+	 * 
+	 * @param key 键
+	 * @return 值
+	 */
+	public long getSize(String key) {
+		return key == null ? null : redisTemplate.keys(key).size();
+	}
 
 	/**
 	 * 普通缓存放入
@@ -193,6 +207,21 @@ public class RedisUtil {
 	 */
 	public Map<Object, Object> hmget(String key) {
 		return redisTemplate.opsForHash().entries(key);
+	}
+	
+	/**
+	 * 获取hash缓存的长度
+	 * 
+	 * @param key 键
+	 * @return
+	 */
+	public long hGetHashSize(String key) {
+		try {
+			return redisTemplate.opsForHash().entries(key).size();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 	/**
