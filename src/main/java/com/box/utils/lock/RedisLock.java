@@ -45,10 +45,10 @@ public class RedisLock implements Lock {
 	public boolean tryLock(String lockKey, String requestID, int expire) {
 		boolean setRedisLock = redisUtil.setRedisLock(lockKey, requestID, expire);
 		if (setRedisLock) {
-			log.info("加锁成功√√√");
+			log.info("加锁成功√√√--->requestID={};lockKey={};",requestID,lockKey);
 			return true;
 		} else {
-			log.info("尝试加锁失败×××");
+			log.info("尝试加锁失败×××--->requestID={};lockKey={};",requestID,lockKey);
 			return false;
 		}
 	}
@@ -57,9 +57,9 @@ public class RedisLock implements Lock {
 	public void unlock(String lockKey, String requestID) {
 		Long luaExistKeyDel = redisUtil.luaExistKeyDel(lockKey, requestID,"com/box/utils/lock/redis_unlock.lua");
 		if (luaExistKeyDel==1) {
-			log.info("解锁成功√√√");
+			log.info("解锁成功√√√--->requestID={};lockKey={};",requestID,lockKey);
 		} else {
-			log.info("解锁失败×××");
+			log.info("解锁失败×××--->requestID={};lockKey={};",requestID,lockKey);
 		}
 	}
 
