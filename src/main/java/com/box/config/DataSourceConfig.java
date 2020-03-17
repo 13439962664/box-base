@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -25,7 +26,7 @@ public class DataSourceConfig {
 	
     @Bean(destroyMethod = "close", initMethod = "init")
 	@ConfigurationProperties("spring.datasource.master")
-	public DataSource masterDataSource() {
+    public DataSource masterDataSource() {
 		return DataSourceBuilder.create().type(dataSourceType).build();
 	}
 
@@ -42,6 +43,7 @@ public class DataSourceConfig {
 	}
 
 	@Bean
+	@Qualifier("dataSource")
 	public DataSource myRoutingDataSource() {
 		Map<Object, Object> targetDataSources = new HashMap<>();
 		targetDataSources.put(DBTypeEnum.MASTER, masterDataSource());
@@ -52,5 +54,8 @@ public class DataSourceConfig {
 		myRoutingDataSource.setTargetDataSources(targetDataSources);
 		return myRoutingDataSource;
 	}
-
+	
+	/*
+	 * @Bean public DataSource dataSource() { return myRoutingDataSource(); }
+	 */
 }

@@ -17,6 +17,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.box.tests.dao.TestDao;
+import com.box.tests.pojo.TestPojo;
 import com.box.utils.RedisUtil;
 import com.box.utils.lock.RedisLock;
 
@@ -25,14 +27,22 @@ class BoxBaseApplicationTests {
 	
 	private static final Logger log = LoggerFactory.getLogger(BoxBaseApplicationTests.class);
 	
-	@Resource
+//	@Resource
 	DataSource dataSource;
 	
-	@Autowired
+//	@Autowired
 	RedisLock redisLock;
 	
 	@Autowired
 	RedisUtil redisUtil;
+	
+//	@Autowired
+	TestDao testDao;
+	
+	@Test
+	void testRedisUtil() {
+		log.info("*********************{}",redisUtil.get("abc"));
+	}
 
 	//@Test
 	public void contextLoads() throws SQLException {
@@ -49,7 +59,12 @@ class BoxBaseApplicationTests {
 	static int num = 80;
 	static long start;
 	
-	@Test
+//	@Test
+	public void testDao() {
+		testDao.insert(new TestPojo());
+	}
+	
+//	@Test
 	public void testLock() {
 		final String LOCK_KEY = "lock_test";
 		final int max_num = 100;

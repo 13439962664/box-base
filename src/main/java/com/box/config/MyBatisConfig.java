@@ -12,8 +12,10 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@EnableTransactionManagement
-@Configuration
+import com.box.interceptor.SqlInterceptor;
+
+//@EnableTransactionManagement
+//@Configuration
 public class MyBatisConfig {
 
 	@Resource(name = "myRoutingDataSource")
@@ -29,11 +31,17 @@ public class MyBatisConfig {
 		sqlSessionFactoryBean.setTypeAliasesPackage("com.box.**.pojo");
 		sqlSessionFactoryBean
 				.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mapper/**/*.xml"));
+//		sqlSessionFactoryBean.setPlugins(sqlInterceptor());
 		return sqlSessionFactoryBean.getObject();
 	}
 
 	@Bean
 	public PlatformTransactionManager platformTransactionManager() {
 		return new DataSourceTransactionManager(myRoutingDataSource);
+	}
+	
+	@Bean
+	public SqlInterceptor sqlInterceptor() {
+		return new SqlInterceptor();
 	}
 }

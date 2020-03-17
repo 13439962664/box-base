@@ -1,7 +1,7 @@
 spring:
   redis: 
     database: 0
-    host: 39.100.233.94
+    host: 127.0.0.1
     port: 6379
     password: boxhill
     timeout: 3000
