@@ -8,7 +8,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 import org.junit.jupiter.api.Test;
@@ -17,8 +16,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.box.tests.dao.TestDao;
-import com.box.tests.pojo.TestPojo;
 import com.box.utils.RedisUtil;
 import com.box.utils.lock.RedisLock;
 
@@ -36,8 +33,6 @@ class BoxBaseApplicationTests {
 	@Autowired
 	RedisUtil redisUtil;
 	
-//	@Autowired
-	TestDao testDao;
 	
 	@Test
 	void testRedisUtil() {
@@ -59,10 +54,6 @@ class BoxBaseApplicationTests {
 	static int num = 80;
 	static long start;
 	
-//	@Test
-	public void testDao() {
-		testDao.insert(new TestPojo());
-	}
 	
 //	@Test
 	public void testLock() {

@@ -28,7 +28,7 @@ import com.box.utils.RedisUtil;
 
 @EnableTransactionManagement
 @Configuration
-@MapperScan("com.box.**.dao")
+@MapperScan({"com.box.**.dao","com.box.**.mapper"})
 public class MyBatisPlusConfig {
 	
 	private static final Logger log = LoggerFactory.getLogger(MyBatisPlusConfig.class);

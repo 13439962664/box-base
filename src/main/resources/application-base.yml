@@ -17,7 +17,6 @@ spring:
     static-path-pattern: /**
   resources:
     static-locations: classpath:/templates/,classpath:/static/
-
 async: 
   pool: 
     corePoolSize: 10
@@ -25,4 +24,3 @@ async:
     queueCapacity: 200
     keepAliveSeconds: 60
     threadNamePrefix: async-task-exec-  
-
